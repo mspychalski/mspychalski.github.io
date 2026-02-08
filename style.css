@@ -162,14 +162,28 @@ button:hover {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  /* boczne zdjęcia bez obramowań */
 }
 
 .center-img {
   max-width: 95%;
   max-height: 95%;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  border-radius: 20px;             /* tylko środkowe ma zaokrąglenia */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3); /* tylko środkowe ma cień */
+}
+
+.middle-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* tekst pod zdjęciem */
+.middle-text {
+  margin-top: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--pink-dark, #c9184a);
+  text-align: center;
 }
