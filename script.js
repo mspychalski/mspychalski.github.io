@@ -64,7 +64,5 @@ noBtn.addEventListener("click", () => {
 
 // KLIK "TAK"
 yesBtn.addEventListener("click", () => {
-  heart.classList.add("show");
-  yesBtn.textContent = "💖 ZAWSZE 💖";
-  noBtn.style.display = "none";
+  window.location.href = "flaga.html";
 });

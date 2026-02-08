@@ -138,3 +138,38 @@ button:hover {
   position: relative;
   z-index: 1;
 }
+
+.flag-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.flag-container .stripe {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stripe.left,
+.stripe.right { flex-basis: 20%; }
+.stripe.middle { flex-basis: 60%; }
+
+.side-img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.center-img {
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
