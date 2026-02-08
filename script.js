@@ -4,12 +4,11 @@ const heart = document.getElementById("heart");
 const card = document.querySelector(".card");
 const title = card.querySelector("h1");
 
-let btnX = 0;
-let btnY = 0;
+let posX = 0;
+let posY = 0;
 
 noBtn.style.position = "relative";
 
-// reagujemy na RUCH MYSZY W KARCIE
 card.addEventListener("mousemove", (e) => {
   const btnRect = noBtn.getBoundingClientRect();
   const cardRect = card.getBoundingClientRect();
@@ -18,26 +17,23 @@ card.addEventListener("mousemove", (e) => {
   const mouseX = e.clientX;
   const mouseY = e.clientY;
 
-  // środek przycisku
   const btnCenterX = btnRect.left + btnRect.width / 2;
   const btnCenterY = btnRect.top + btnRect.height / 2;
 
-  // dystans kursora od przycisku
-  const distanceX = mouseX - btnCenterX;
-  const distanceY = mouseY - btnCenterY;
-  const distance = Math.hypot(distanceX, distanceY);
+  const dx = btnCenterX - mouseX;
+  const dy = btnCenterY - mouseY;
+  const distance = Math.hypot(dx, dy);
 
-  const TRIGGER_DISTANCE = 120; // jak blisko trzeba być
+  const TRIGGER = 140;      // dystans reakcji
+  const SPEED = 6;          // płynność (im mniejsze tym lepiej)
 
-  if (distance < TRIGGER_DISTANCE) {
-    // kierunek ucieczki (od kursora)
-    let moveX = distanceX > 0 ? -1 : 1;
-    let moveY = distanceY > 0 ? -1 : 1;
+  if (distance < TRIGGER) {
+    // normalizacja wektora
+    const nx = dx / distance;
+    const ny = dy / distance;
 
-    const STEP = 40;
-
-    let newX = btnX + moveX * STEP;
-    let newY = btnY + moveY * STEP;
+    let newX = posX + nx * SPEED;
+    let newY = posY + ny * SPEED;
 
     // GRANICE KARTY
     const padding = 20;
@@ -48,25 +44,17 @@ card.addEventListener("mousemove", (e) => {
     const minY = cardRect.top - btnRect.top + padding;
     const maxY = cardRect.bottom - btnRect.bottom - padding;
 
-    // BLOKADA NACHODZENIA NA PYTANIE
+    // BLOKADA PYTANIA
     const futureTop = btnRect.top + newY;
     if (futureTop < titleRect.bottom + 20) {
-      newY += STEP * 2; // ucieczka w dół
+      newY += SPEED * 2;
     }
 
-    // jeśli brak miejsca → losowy teleport
-    if (newX < minX || newX > maxX) {
-      newX = Math.random() * (maxX - minX) + minX;
-    }
+    // CLAMP (zamiast teleportu)
+    posX = Math.max(minX, Math.min(maxX, newX));
+    posY = Math.max(minY, Math.min(maxY, newY));
 
-    if (newY < minY || newY > maxY) {
-      newY = Math.random() * (maxY - minY) + minY;
-    }
-
-    btnX = newX;
-    btnY = newY;
-
-    noBtn.style.transform = `translate(${btnX}px, ${btnY}px)`;
+    noBtn.style.transform = `translate(${posX}px, ${posY}px)`;
   }
 });
 

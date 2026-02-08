@@ -132,3 +132,23 @@ button:hover {
     max-width: 220px;
   }
 }
+
+.left {
+  position: relative;
+}
+
+.left::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, #ff4d6d 0%, #c9184a 70%);
+  border-radius: 50%;
+  filter: blur(25px);
+  z-index: 0;
+}
+
+.heart-image {
+  position: relative;
+  z-index: 1;
+}
