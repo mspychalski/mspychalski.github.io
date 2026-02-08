@@ -173,17 +173,28 @@ button:hover {
   box-shadow: 0 15px 35px rgba(0,0,0,0.3); /* tylko środkowe ma cień */
 }
 
+/* środkowa kolumna – kontener zdjęcia + tekst */
 .middle-content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* tekst pod zdjęciem */
+/* środkowe zdjęcie dopasowane do ekranu laptopa */
+.center-img {
+  max-width: 90%;         /* nie przekracza szerokości kolumny */
+  max-height: 70vh;       /* zmieści się na ekranie 15,6” */
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* tekst pod zdjęciem – duży i wyraźny */
 .middle-text {
   margin-top: 20px;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.5rem;       /* duży tekst */
+  font-weight: 800;
   color: var(--pink-dark, #c9184a);
   text-align: center;
+  line-height: 1.2;
 }
