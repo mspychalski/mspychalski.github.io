@@ -1,0 +1,96 @@
+:root {
+  --pink: #ff4d6d;
+  --pink-dark: #c9184a;
+  --green: #2ecc71;
+  --green-dark: #27ae60;
+  --red: #e74c3c;
+  --red-dark: #c0392b;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: white;
+  padding: 60px 50px;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+h1 {
+  margin: 0 0 40px;
+  font-size: 2.2rem;
+  color: var(--pink-dark);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  position: relative;
+  margin-top: 30px;
+}
+
+button {
+  font-size: 1.1rem;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.yes {
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  color: white;
+}
+
+.no {
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  color: white;
+  position: relative;
+}
+
+.heart {
+  font-size: 2rem;
+  margin-top: 25px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.heart.show {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
